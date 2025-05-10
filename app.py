@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 import mysql.connector
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ def enviar():
 
     conn = connector()
     cursor = conn.cursor()
-    sql = "INSERT INTO usuarios (nome, email, telefone, idade) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO candidatos (nome, email, telefone, idade) VALUES (%s, %s, %s, %s)"
     val = (nome, email, telefone, idade)
     cursor.execute(sql, val)
     conn.commit()
