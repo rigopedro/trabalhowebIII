@@ -1,0 +1,566 @@
+/* Reset e estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    background-color: #f5f5f5;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.destaque h2,
+.destaque h3 {
+    color: #222;
+}
+
+p {
+    margin-bottom: 15px;
+    color: inherit;
+}
+
+/* Header */
+header {
+    background-color: #000;
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.title-container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.title-container p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    color: #ccc;
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    position: relative;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    color: #fff;
+    background-color: #333;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    transition: width 0.3s;
+}
+
+nav a:hover::after {
+    width: 70%;
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Botão de Inscrição */
+.inscricao-btn {
+    background-color: #8E44AD;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.inscricao-btn:hover {
+    background-color: #7D3C98;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .header-actions {
+        gap: 15px;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .inscricao-btn {
+        padding: 8px 20px;
+        order: -1; /* Coloca o botão primeiro em mobile */
+        margin-bottom: 10px;
+    }
+}
+
+/* Seções */
+section {
+    padding: 50px 0;
+    background-color: #000;
+}
+
+.destaque {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Seção Sobre */
+.sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.sobre-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    border-left: 4px solid #8E44AD;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.destaque .sobre-item {
+    background: rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #000;
+}
+
+.sobre-item h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.destaque .sobre-item h3 {
+    color: #333;
+}
+
+.sobre-item p {
+    color: #eee;
+}
+
+.destaque .sobre-item p {
+    color: #555;
+}
+
+.sobre-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Imagem destaque */
+.img-destaque {
+    width: 90%;
+    max-height: 600px;
+    object-fit: cover;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Oficinas - Layout de 5 colunas */
+.oficinas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 1200px) {
+    .oficinas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .oficinas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .oficinas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Estilos dos cards de oficina (mantidos) */
+.oficina {
+    background: #111;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    min-height: 200px; /* Altura uniforme */
+    display: flex;
+    flex-direction: column;
+}
+
+.oficina h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.oficina p {
+    color: #ddd;
+    font-size: 0.9rem;
+    flex-grow: 1; /* Faz o texto ocupar espaço disponível */
+}
+
+/* Efeitos hover mantidos */
+.oficina:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-left: 4px solid #8E44AD;
+}
+
+/* Responsivo para oficinas */
+@media (max-width: 768px) {
+    .oficinas-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Galeria - Layout de 5 colunas fixas */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 30px;
+    overflow-x: auto; /* Para telas menores que 5 colunas */
+    padding-bottom: 10px; /* Espaço para scroll */
+}
+
+.galeria-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    aspect-ratio: 1 / 1; /* Mantém proporção quadrada */
+    min-width: 200px; /* Largura mínima para cada item */
+    transition: all 0.3s;
+}
+
+/* Efeitos de hover mantidos */
+.galeria-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Overlay sempre visível (opcional) */
+.galeria-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    padding: 15px;
+    color: white;
+}
+
+.galeria-overlay h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.galeria-overlay p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .galeria-grid {
+        grid-template-columns: repeat(5, 200px); /* Largura fixa para scroll horizontal */
+        grid-auto-flow: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria-item {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria-item {
+        min-width: 160px;
+    }
+}
+
+/* Footer */
+.site-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 0 0;
+    border-top: 1px solid #333;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    padding: 0 15px;
+}
+
+.footer-column h3 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-column h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #8E44AD;
+}
+
+.footer-column p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-links a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+.social-links a:hover {
+    color: #8E44AD;
+    transform: translateY(-3px);
+}
+
+/* Contact Info */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-info i {
+    width: 20px;
+    text-align: center;
+    color: #8E44AD;
+}
+
+/* Map */
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    margin-top: 15px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .footer-column {
+        min-width: 100%;
+    }
+    
+    .map-container iframe {
+        height: 250px;
+    }
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .col-md-3,
+    .col-md-4,
+    .col-md-5 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .logo-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    .sobre-grid,
+    .atividades-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .col-md-3,
+    .col-md-4,
+    .col-md-5 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .ftco-footer-widget {
+        margin-bottom: 40px;
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    nav a {
+        padding: 6px 8px;
+        font-size: 0.8rem;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+    
+    .title-container h1 {
+        font-size: 1.6rem;
+    }
+    
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .sobre-item {
+        padding: 20px;
+    }
+}
