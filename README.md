@@ -2,11 +2,9 @@
 
 Este projeto é um site desenvolvido para a **ONG Alakazam**, uma organização sem fins lucrativos dedicada à **arte, cultura e incentivo à juventude**. A plataforma permite que visitantes conheçam a ONG e enviem um formulário com seus dados de contato.
 
-
 ## 🐇 Sobre a Alakazam
 
 A **ONG Alakazam** é um centro de incentivo à juventude que atua por meio de oficinas e apresentações de **teatro, cultura e arte**. Nosso objetivo é oferecer espaço para expressão criativa e desenvolvimento social de jovens da comunidade.
-
 
 ## 🔧 Funcionalidades
 
@@ -15,9 +13,8 @@ A **ONG Alakazam** é um centro de incentivo à juventude que atua por meio de o
   - Nome
   - Telefone
   - Email
-  - Idade
+  - Data de Nascimento
 - Salvamento das informações em um banco de dados MySQL
-
 
 ## 🧑‍💻 Tecnologias Utilizadas
 
@@ -26,7 +23,6 @@ A **ONG Alakazam** é um centro de incentivo à juventude que atua por meio de o
 - JavaScript
 - Python (Flask)
 - MySQL
-
 
 ## 📁 Estrutura do Projeto
 

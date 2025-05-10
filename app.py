@@ -20,12 +20,12 @@ def enviar():
     nome = request.form['nome']
     email = request.form['email']
     telefone = request.form['telefone']
-    idade = request.form['idade']
+    data_nascimento = request.form['data_nascimento']
 
     conn = connector()
     cursor = conn.cursor()
-    sql = "INSERT INTO candidatos (nome, email, telefone, idade) VALUES (%s, %s, %s, %s)"
-    val = (nome, email, telefone, idade)
+    sql = "INSERT INTO candidatos (nome, email, telefone, data_nascimento) VALUES (%s, %s, %s, %s)"
+    val = (nome, email, telefone, data_nascimento)
     cursor.execute(sql, val)
     conn.commit()
     cursor.close()
