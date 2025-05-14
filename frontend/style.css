@@ -343,12 +343,15 @@ section {
 .galeria-overlay h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
+    color: #ffffff; /* Título em preto */
 }
 
 .galeria-overlay p {
     font-size: 0.8rem;
     margin-bottom: 0;
+    color: #fff; /* Descrição em branco */
 }
+
 
 /* Responsividade */
 @media (max-width: 1200px) {
