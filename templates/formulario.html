@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Inscrição</title>
-    <link rel="stylesheet" href="formulario.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
 </head>
 <body>
     <!-- Navbar -->
@@ -11,7 +11,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo-container">
-                    <img src="images/coelho-logo.jpeg" alt="Logo Alakazam - Coelho" class="logo">
+                    <img src="{{ url_for('static', filename='images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
                     <div class="title-container">
                         <h1>Grupo Alakazam</h1>
                         <p>Instituição de Artes e Cultura</p>
@@ -25,7 +25,7 @@
                             <li><a href="#galeria">Galeria</a></li>
                         </ul>
                     </nav>
-                    <a href="/inscricao" class="inscricao-btn">Inscreva-se</a>
+                    <a href="/" class="inscricao-btn">Inscreva-se</a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,12 @@ def connector():
         database="alakazam_db"
     )
 
+
 @app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/inscricao')
 def formulario():
     return render_template('formulario.html')
 
@@ -32,3 +37,6 @@ def enviar():
     conn.close()
 
     return redirect('/')
+
+if __name__ == '__main__':
+    app.run(debug=True)

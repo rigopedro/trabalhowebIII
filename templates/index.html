@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ONG Alakazam - Teatro, Cultura e Arte para Jovens</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend/style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
     <div class="container">
         <div class="header-content">
             <div class="logo-container">
-                <img src="images/coelho-logo.jpeg" alt="Logo Alakazam - Coelho" class="logo">
+                <img src="{{ url_for('static', filename='frontend/images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
                 <div class="title-container">
                     <h1>Grupo Alakazam</h1>
                     <p>Instituição de Artes e Cultura</p>
@@ -46,7 +46,7 @@
  de junho de 2022, nossa missão é transformar vidas por
  meio da expressão artística e do engajamento social.
 </p>
-            <img src="images/equipe.jpg" alt="Equipe da ONG Alakazam" class="img-destaque">
+            <img src="{{ url_for('static', filename='frontend/images/equipe.jpg') }}" alt="Equipe da ONG Alakazam" class="img-destaque" />
         </div>
     </section>
 
@@ -129,7 +129,7 @@
         <div class="galeria-grid">
             <!-- Oficina de Dança -->
             <div class="galeria-item">
-                <img src="images/danca.jpg" alt="Oficina de Dança">
+                <img src="{{ url_for('static', filename='frontend/images/danca.jpg') }}" alt="Oficina de Dança" />
                 <div class="galeria-overlay">
                     <h3>Dança</h3>
                     <p>Expressão corporal e movimento artístico</p>
@@ -138,7 +138,7 @@
             
             <!-- Oficina de Teatro -->
             <div class="galeria-item">
-                <img src="images/teatro.jpg" alt="Oficina de Teatro">
+                <img src="{{ url_for('static', filename='frontend/images/teatro.jpg') }}" alt="Oficina de Teatro" />
                 <div class="galeria-overlay">
                     <h3>Teatro</h3>
                     <p>Arte dramática e expressão cênica</p>
@@ -156,7 +156,7 @@
             
             <!-- Oficina de Expressão -->
             <div class="galeria-item">
-                <img src="images/expressao.jpg" alt="Oficina de Expressão">
+                <img src="{{ url_for('static', filename='frontend/images/desenho.jpg') }}" alt="Oficina de Desenho" />
                 <div class="galeria-overlay">
                     <h3>Expressão</h3>
                     <p>Comunicação e desenvolvimento pessoal</p>
@@ -165,7 +165,7 @@
             
             <!-- Oficina de Coral -->
             <div class="galeria-item">
-                <img src="images/coral.jpg" alt="Oficina de Coral">
+                <img src="{{ url_for('static', filename='frontend/images/coral.jpg') }}" alt="Oficina de Coral" />
                 <div class="galeria-overlay">
                     <h3>Coral</h3>
                     <p>Harmonia vocal e trabalho em grupo</p>
