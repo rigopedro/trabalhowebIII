@@ -24,5 +24,9 @@ A **ONG Alakazam** é um centro de incentivo à juventude que atua por meio de o
 - Python (Flask)
 - MySQL
 
-## 📁 Estrutura do Projeto
+## 📃 Requisitos
+
+- flask
+- mysql-connector
+
 
