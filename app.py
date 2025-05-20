@@ -11,6 +11,15 @@ def connector():
         database="alakazam_db"
     )
 
+def enviar_sql(nome, email, telefone, data_nascimento):
+    conn = connector()
+    cursor = conn.cursor()
+    sql = "INSERT INTO candidatos (nome, email, telefone, data_nascimento) VALUES (%s, %s, %s, %s)"
+    val = (nome, email, telefone, data_nascimento)
+    cursor.execute(sql, val)
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 @app.route('/')
 def home():
@@ -27,16 +36,13 @@ def enviar():
     telefone = request.form['telefone']
     data_nascimento = request.form['data_nascimento']
 
-    conn = connector()
-    cursor = conn.cursor()
-    sql = "INSERT INTO inscricoes (nome, email, telefone, data_nascimento) VALUES (%s, %s, %s, %s)"
-    val = (nome, email, telefone, data_nascimento)
-    cursor.execute(sql, val)
-    conn.commit()
-    cursor.close()
-    conn.close()
+    try:
+        enviar_sql(nome, email, telefone, data_nascimento)
+    except Exception as e:
+        app.logger.error(e)
+        return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
 
-    return redirect('/')
+    return render_template('formulario.html', resultado="Inscrição enviada com sucesso!")
 
 if __name__ == '__main__':
     app.run(debug=True)
