@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Inscrição</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
-</head>
-<body>
-    <!-- Navbar -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-container">
-                    <img src="{{ url_for('static', filename='images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
-                    <div class="title-container">
-                        <h1>Grupo Alakazam</h1>
-                        <p>Instituição de Artes e Cultura</p>
+    <head>
+        <meta charset="UTF-8">
+        <title>Inscrição</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='formulario.css') }}">
+    </head>
+    <body>
+        <!-- Navbar -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-container">
+                        <img src="{{ url_for('static', filename='images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
+                        <div class="title-container">
+                            <h1>Grupo Alakazam</h1>
+                            <p>Instituição de Artes e Cultura</p>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <nav>
+                            <ul>
+                                <li><a href="#sobre">Sobre</a></li>
+                                <li><a href="#oficinas">Oficinas</a></li>
+                                <li><a href="#galeria">Galeria</a></li>
+                            </ul>
+                        </nav>
+                        <a href="/" class="inscricao-btn">Inscreva-se</a>
                     </div>
                 </div>
-                <div class="header-actions">
-                    <nav>
-                        <ul>
-                            <li><a href="#sobre">Sobre</a></li>
-                            <li><a href="#oficinas">Oficinas</a></li>
-                            <li><a href="#galeria">Galeria</a></li>
-                        </ul>
-                    </nav>
-                    <a href="/" class="inscricao-btn">Inscreva-se</a>
-                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Formulário centralizado -->
-    <main class="main-content">
-        <div class="form-container">
-            <h2>Candidato:</h2>
-            <form action="/enviar" method="POST">
-                <label for="fname">Nome:</label><br>
-                <input type="text" id="fname" name="nome"><br>
+        <!-- Formulário centralizado -->
+        <main class="main-content">
+            <div class="form-container">
+                <h2>Candidato:</h2>
+                <form action="/enviar" method="POST">
+                    <label for="fname">Nome:</label><br>
+                    <input type="text" id="fname" name="nome"><br>
 
-                <label for="fdata">Data Nascimento:</label><br>
-                <input type="date" id="fdata" name="data_nascimento"><br>
+                    <label for="fdata">Data Nascimento:</label><br>
+                    <input type="date" id="fdata" name="data_nascimento"><br>
 
-                <label for="femail">Email:</label><br>
-                <input type="text" id="femail" name="email"><br>
+                    <label for="femail">Email:</label><br>
+                    <input type="text" id="femail" name="email"><br>
 
-                <label for="ftel">Telefone:</label><br>
-                <input type="text" id="ftel" name="telefone"><br>
+                    <label for="ftel">Telefone:</label><br>
+                    <input type="text" id="ftel" name="telefone"><br>
 
-                <input type="submit" class="btn" value="Enviar"/>
-            </form>
-        </div>
-    </main>
-</body>
+                    <input type="submit" class="btn" value="Enviar"/>
+                </form>
+                <br>
+                {% if resultado %}
+                <center> 
+                    <p>
+                    {{ resultado }}
+                    </p>
+                </center>
+                {% endif %}
+            </div>
+        </main>
+    </body>
 </html>

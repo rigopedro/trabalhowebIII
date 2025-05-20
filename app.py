@@ -36,6 +36,21 @@ def enviar():
     telefone = request.form['telefone']
     data_nascimento = request.form['data_nascimento']
 
+    # remover caracteres desnecessarios do numero de telefone inserido
+
+    telefone = telefone.strip().translate({ord(i): None for i in ' +-.()'})
+
+    # checagem dos dados inseridos
+
+    if nome == '' or len(nome) < 2:
+        return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
+    if email == '' or '@' not in email:
+        return render_template('formulario.html', resultado="E-mail inválido, por favor insira novamente")
+    if len(telefone) != 11:
+        return render_template('formulario.html', resultado="Numero de telefone invalido. Não esqueça de incluir o DDD, por exemplo: 21 91234-5678")
+
+    app.logger.info(nome, email, telefone, data_nascimento)
+
     try:
         enviar_sql(nome, email, telefone, data_nascimento)
     except Exception as e:
