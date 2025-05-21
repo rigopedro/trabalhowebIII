@@ -20,7 +20,6 @@ A **ONG Alakazam** é um centro de incentivo à juventude que atua por meio de o
 
 - HTML5
 - CSS3
-- JavaScript
 - Python (Flask)
 - MySQL
 
