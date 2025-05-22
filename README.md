@@ -1,4 +1,4 @@
-
+<div align= "center">
 # 🎨 **TrabalhowebIII**
 
 > **Empoderando jovens por meio do acesso à arte e à cultura.**
@@ -8,6 +8,7 @@
 ![CSS](https://img.shields.io/badge/css-47.7%25-blue)  
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
 
+</div>
 ---
 
 ## 🚀 **Visão Geral**
