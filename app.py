@@ -36,16 +36,6 @@ def enviar():
     telefone = request.form['telefone']
     data_nascimento = request.form['data_nascimento']
 
-@app.route('/admin')
-def admin():
-    conn = connector()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM inscricoes ORDER BY data_envio DESC")
-    inscritos = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return render_template('admin.html', inscritos=inscritos)
-
     # remover caracteres desnecessarios do numero de telefone inserido
 
     telefone = telefone.strip().translate({ord(i): None for i in ' +-.()'})
@@ -68,6 +58,16 @@ def admin():
         return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
 
     return render_template('formulario.html', resultado="Inscrição enviada com sucesso!")
+
+@app.route('/admin')
+def admin():
+    conn = connector()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM inscricoes ORDER BY data_envio DESC")
+    inscritos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('admin.html', inscritos=inscritos)
 
 if __name__ == '__main__':
     app.run(debug=True)
