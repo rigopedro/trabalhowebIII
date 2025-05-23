@@ -24,7 +24,7 @@ def enviar_sql(nome, email, telefone, data_nascimento):
 
 @app.route('/')
 def home():
-    caminho_pasta = os.path.join(app.static_folder, 'images/carrossel')
+    caminho_pasta = os.path.join(app.static_folder, 'frontend/images/carrossel')
 
     imagens = []
     if os.path.exists(caminho_pasta):
@@ -33,6 +33,8 @@ def home():
             for arquivo in os.listdir(caminho_pasta) 
             if arquivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
     ]
+
+    app.logger.info(imagens)
 
     return render_template('index.html', imagens_carrossel=imagens)
 
