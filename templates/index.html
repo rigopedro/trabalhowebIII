@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='frontend/style.css') }}">
+    <script src="{{ url_for('static', filename='frontend/script.js') }}"></script>
+
+
+
 </head>
 <body>
     <header>
@@ -123,57 +128,120 @@
     </div>
 </section>
 
+
 <section id="galeria" class="destaque">
-    <div class="container">
-        <h2>Galeria de Oficinas</h2>
-        <div class="galeria-grid">
-            <!-- Oficina de Dança -->
-            <div class="galeria-item">
-                <img src="{{ url_for('static', filename='frontend/images/danca.jpg') }}" alt="Oficina de Dança" />
-                <div class="galeria-overlay">
-                    <h3>Dança</h3>
-                    <p>Expressão corporal e movimento artístico</p>
-                </div>
-            </div>
-            
-            <!-- Oficina de Teatro -->
-            <div class="galeria-item">
-                <img src="{{ url_for('static', filename='frontend/images/teatro.jpg') }}" alt="Oficina de Teatro" />
-                <div class="galeria-overlay">
-                    <h3>Teatro</h3>
-                    <p>Arte dramática e expressão cênica</p>
-                </div>
-            </div>
-            
-            <!-- Oficina de Desenho -->
-            <div class="galeria-item">
-                <img src="images/desenho.jpg" alt="Oficina de Desenho">
-                <div class="galeria-overlay">
-                    <h3>Desenho</h3>
-                    <p>Técnicas artísticas e criatividade visual</p>
-                </div>
-            </div>
-            
-            <!-- Oficina de Expressão -->
-            <div class="galeria-item">
-                <img src="{{ url_for('static', filename='frontend/images/desenho.jpg') }}" alt="Oficina de Desenho" />
-                <div class="galeria-overlay">
-                    <h3>Expressão</h3>
-                    <p>Comunicação e desenvolvimento pessoal</p>
-                </div>
-            </div>
-            
-            <!-- Oficina de Coral -->
-            <div class="galeria-item">
-                <img src="{{ url_for('static', filename='frontend/images/coral.jpg') }}" alt="Oficina de Coral" />
-                <div class="galeria-overlay">
-                    <h3>Coral</h3>
-                    <p>Harmonia vocal e trabalho em grupo</p>
-                </div>
-            </div>
+  <div class="container">
+    <h2>Galeria de Oficinas</h2>
+
+    <div class="carousel-container">
+      
+
+      <div class="carousel-track">
+        <!-- 12 itens -->
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/danca.jpg') }}" alt="Oficina de Dança" />
+          <div class="galeria-overlay">
+            <h3>Dança</h3>
+            <p>Expressão corporal e movimento artístico</p>
+          </div>
         </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/teatro.jpg') }}" alt="Oficina de Teatro" />
+          <div class="galeria-overlay">
+            <h3>Teatro</h3>
+            <p>Arte dramática e expressão cênica</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/desenho.jpg') }}" alt="Oficina de Desenho" />
+          <div class="galeria-overlay">
+            <h3>Desenho</h3>
+            <p>Técnicas artísticas e criatividade visual</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/expressao.jpg') }}" alt="Oficina de Expressão" />
+          <div class="galeria-overlay">
+            <h3>Expressão</h3>
+            <p>Comunicação e desenvolvimento pessoal</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/coral.jpg') }}" alt="Oficina de Coral" />
+          <div class="galeria-overlay">
+            <h3>Coral</h3>
+            <p>Harmonia vocal e trabalho em grupo</p>
+          </div>
+        </div>
+
+        <!-- Extras para completar 12 -->
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/teatro2.jpg') }}" alt="Oficina de Teatro 2" />
+          <div class="galeria-overlay">
+            <h3>Teatro 2</h3>
+            <p>Expressão corporal e teatro contemporâneo</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/danca2.jpg') }}" alt="Oficina de Dança 2" />
+          <div class="galeria-overlay">
+            <h3>Dança 2</h3>
+            <p>Ritmos modernos e clássicos</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/coral2.jpg') }}" alt="Oficina de Coral 2" />
+          <div class="galeria-overlay">
+            <h3>Coral 2</h3>
+            <p>Coral avançado e técnica vocal</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/desenho2.jpg') }}" alt="Oficina de Desenho 2" />
+          <div class="galeria-overlay">
+            <h3>Desenho 2</h3>
+            <p>Arte digital e pintura</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/expres2.jpg') }}" alt="Oficina de Expressão 2" />
+          <div class="galeria-overlay">
+            <h3>Expressão 2</h3>
+            <p>Escrita criativa e poesia</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/teatro3.jpg') }}" alt="Oficina de Teatro 3" />
+          <div class="galeria-overlay">
+            <h3>Teatro 3</h3>
+            <p>Teatro musical e performance</p>
+          </div>
+        </div>
+
+        <div class="galeria-item">
+          <img src="{{ url_for('static', filename='frontend/images/danca3.jpg') }}" alt="Oficina de Dança 3" />
+          <div class="galeria-overlay">
+            <h3>Dança 3</h3>
+            <p>Dança contemporânea e street dance</p>
+          </div>
+        </div>
+      </div>
+
+      
     </div>
+  </div>
 </section>
+
 
 <footer class="site-footer">
     <div class="container">
