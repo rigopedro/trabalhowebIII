@@ -34,10 +34,6 @@ def home():
             if arquivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
         ]
 
-    app.logger.info(imagens)
-
-    app.logger.info(imagens)
-
     return render_template('index.html', imagens_carrossel=imagens)
 
 @app.route('/inscricao')
