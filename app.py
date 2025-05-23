@@ -36,6 +36,8 @@ def home():
 
     app.logger.info(imagens)
 
+    app.logger.info(imagens)
+
     return render_template('index.html', imagens_carrossel=imagens)
 
 @app.route('/inscricao')
