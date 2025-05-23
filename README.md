@@ -15,7 +15,7 @@
 
 ## 🚀 **Visão Geral**
 
-**TrabalhowebIII** é uma aplicação web desenvolvida para facilitar o cadastro de usuários em instituições culturais, promovendo o acesso democrático à arte e cultura por meio de uma interface simples, acessível e intuitiva.
+**Este trabalho** é uma aplicação web desenvolvida para facilitar o cadastro de usuários em instituições culturais, promovendo o acesso democrático à arte e cultura por meio de uma interface simples, acessível e intuitiva.
 
 ---
 
