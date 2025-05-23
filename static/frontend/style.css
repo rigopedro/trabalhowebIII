@@ -221,6 +221,58 @@ section {
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
+.carrossel {
+    background-color: #111;
+    padding: 50px 0;
+    color: #fff;
+}
+
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll 20s linear infinite;
+}
+
+.carousel-item {
+    flex: 0 0 20%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@media (max-width: 768px) {
+    .carousel-item {
+        flex: 0 0 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-item {
+        flex: 0 0 80%;
+    }
+}
+
+
 /* Imagem destaque */
 .img-destaque {
     width: 90%;

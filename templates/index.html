@@ -55,6 +55,22 @@
         </div>
     </section>
 
+    <section class="carrossel">
+    <div class="container">
+        <h2>Veja Nossas Atividades</h2>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                {% for imagem in imagens_carrossel %}
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename=imagem) }}" alt="Imagem Carrossel">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <section id="sobre" class="destaque">
     <div class="container">
         <div class="sobre-grid">

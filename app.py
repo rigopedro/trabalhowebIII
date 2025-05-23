@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, request
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
@@ -23,7 +24,17 @@ def enviar_sql(nome, email, telefone, data_nascimento):
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    caminho_pasta = os.path.join(app.static_folder, 'images/carrossel')
+
+    imagens = []
+    if os.path.exists(caminho_pasta):
+        imagens = [
+            f'images/carrossel/{arquivo}' 
+            for arquivo in os.listdir(caminho_pasta) 
+            if arquivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
+    ]
+
+    return render_template('index.html', imagens_carrossel=imagens)
 
 @app.route('/inscricao')
 def formulario():
