@@ -1,6 +1,11 @@
 from flask import Flask, render_template, redirect, request
 import mysql.connector
 import os
+import smtplib
+from email.message import EmailMessage
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -21,6 +26,27 @@ def enviar_sql(nome, email, telefone, data_nascimento):
     conn.commit()
     cursor.close()
     conn.close()
+
+def enviar_email(nome, email, telefone, data_nascimento):
+    msg = EmailMessage()
+    msg['Subject'] = 'Nova inscrição recebida'
+    msg['From'] = os.getenv('EMAIL_USER')
+    msg['To'] = os.getenv('EMAIL_DESTINO')
+
+    msg.set_content(f"""
+Nova inscrição recebida:
+Nome: {nome}
+Email: {email}
+Telefone: {telefone}
+Data de Nascimento: {data_nascimento}
+""")
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(os.getenv('EMAIL_USER'), os.getenv('SENHA_EMAIL'))
+            smtp.send_message(msg)
+    except Exception as e:
+        app.logger.error(f"Erro ao enviar email: {e}")
 
 @app.route('/')
 def home():
@@ -48,11 +74,9 @@ def enviar():
     data_nascimento = request.form['data_nascimento']
 
     # remover caracteres desnecessarios do numero de telefone inserido
-
     telefone = telefone.strip().translate({ord(i): None for i in ' +-.()[]'})
 
     # checagem dos dados inseridos
-
     if nome == '' or len(nome) < 2:
         return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
     if email == '' or '@' not in email:
@@ -64,6 +88,7 @@ def enviar():
 
     try:
         enviar_sql(nome, email, telefone, data_nascimento)
+        enviar_email(nome, email, telefone, data_nascimento)
     except Exception as e:
         app.logger.error(e)
         return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
