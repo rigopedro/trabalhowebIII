@@ -15,7 +15,7 @@ def connector():
 def enviar_sql(nome, email, telefone, data_nascimento):
     conn = connector()
     cursor = conn.cursor()
-    sql = "INSERT INTO candidatos (nome, email, telefone, data_nascimento) VALUES (%s, %s, %s, %s)"
+    sql = "INSERT INTO inscricoes (nome, email, telefone, data_nascimento) VALUES (%s, %s, %s, %s)"
     val = (nome, email, telefone, data_nascimento)
     cursor.execute(sql, val)
     conn.commit()
