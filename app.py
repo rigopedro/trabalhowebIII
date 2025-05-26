@@ -58,9 +58,9 @@ def home():
             f'frontend/images/carrossel/{arquivo}' 
             for arquivo in os.listdir(caminho_pasta) 
             if arquivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
-            ]
+        ]
 
-        return render_template('index.html', imagens_carrossel=imagens)
+    return render_template('index.html', imagens_carrossel=imagens)
 
 @app.route('/inscricao')
 def formulario():
@@ -76,7 +76,7 @@ def enviar():
     # remover caracteres desnecessarios do numero de telefone inserido
     telefone = telefone.strip().translate({ord(i): None for i in ' +-.()[]'})
 
-        # checagem dos dados inseridos
+    # checagem dos dados inseridos
     if nome == '' or len(nome) < 2:
         return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
     if email == '' or '@' not in email:
