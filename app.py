@@ -34,12 +34,12 @@ def enviar_email(nome, email, telefone, data_nascimento):
     msg['To'] = os.getenv('EMAIL_DESTINO')
 
     msg.set_content(f"""
-Nova inscrição recebida:
-Nome: {nome}
-Email: {email}
-Telefone: {telefone}
-Data de Nascimento: {data_nascimento}
-""")
+        Nova inscrição recebida:
+        Nome: {nome}
+        Email: {email}
+        Telefone: {telefone}
+        Data de Nascimento: {data_nascimento}
+    """)
 
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
@@ -58,9 +58,9 @@ def home():
             f'frontend/images/carrossel/{arquivo}' 
             for arquivo in os.listdir(caminho_pasta) 
             if arquivo.lower().endswith(('.png', '.jpg', '.jpeg', '.gif'))
-        ]
+            ]
 
-    return render_template('index.html', imagens_carrossel=imagens)
+        return render_template('index.html', imagens_carrossel=imagens)
 
 @app.route('/inscricao')
 def formulario():
@@ -76,12 +76,12 @@ def enviar():
     # remover caracteres desnecessarios do numero de telefone inserido
     telefone = telefone.strip().translate({ord(i): None for i in ' +-.()[]'})
 
-    # checagem dos dados inseridos
+        # checagem dos dados inseridos
     if nome == '' or len(nome) < 2:
         return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
     if email == '' or '@' not in email:
         return render_template('formulario.html', resultado="E-mail inválido, por favor insira novamente")
-    if len(telefone) != 11 or telefone.isnumber():
+    if len(telefone) != 11 or telefone.isnumeric():
         return render_template('formulario.html', resultado="Numero de telefone invalido. Não esqueça de incluir o DDD, por exemplo: (21) 91234-5678")
 
     app.logger.info(nome, email, telefone, data_nascimento)
