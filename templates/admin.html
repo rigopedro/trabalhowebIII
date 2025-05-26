@@ -17,6 +17,7 @@
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Data de Nascimento</th>
+                    <th>Instagram</th>
                     <th>Data de Envio</th>
                 </tr>
                 {% for pessoa in inscritos %}
@@ -26,6 +27,7 @@
                     <td>{{ pessoa.telefone }}</td>
                     <td>{{ pessoa.email }}</td>
                     <td>{{ pessoa.data_nascimento }}</td>
+                    <td>{{ pessoa.instagram }}</td>
                     <td>{{ pessoa.data_envio }}</td>
                 </tr>
                 {% endfor %}
