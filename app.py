@@ -39,7 +39,6 @@ Nome: {nome}
 Email: {email}
 Telefone: {telefone}
 Data de Nascimento: {data_nascimento}
-Instagram: {instagram}
 """)
 
     try:
@@ -83,7 +82,7 @@ def enviar():
         return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
     if email == '' or '@' not in email:
         return render_template('formulario.html', resultado="E-mail inválido, por favor insira novamente")
-    if len(telefone) != 11 or not telefone.isnumeric():
+    if len(telefone) != 11 or telefone.isnumber():
         return render_template('formulario.html', resultado="Numero de telefone invalido. Não esqueça de incluir o DDD, por exemplo: (21) 91234-5678")
 
     app.logger.info(nome, email, telefone, data_nascimento)
