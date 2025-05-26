@@ -20,14 +20,14 @@ def connector():
 def enviar_sql(nome, email, telefone, data_nascimento, instagram):
     conn = connector()
     cursor = conn.cursor()
-    sql = "INSERT INTO inscricoes (nome, email, telefone, data_nascimento, instagram) VALUES (%s, %s, %s, %s, %s)"
-    val = (nome, email, telefone, data_nascimento, instagram)
+    sql = "INSERT INTO inscricoes (nome, email, telefone, data_nascimento, instagram) VALUES (%s, %s, %s, %s, %s)" 
+    val = (nome, email, telefone, data_nascimento, instagram) 
     cursor.execute(sql, val)
     conn.commit()
     cursor.close()
     conn.close()
 
-def enviar_email(nome, email, telefone, data_nascimento, instagram):
+def enviar_email(nome, email, telefone, data_nascimento, instagram): 
     msg = EmailMessage()
     msg['Subject'] = 'Nova inscrição recebida'
     msg['From'] = os.getenv('EMAIL_USER')
@@ -39,6 +39,7 @@ Nome: {nome}
 Email: {email}
 Telefone: {telefone}
 Data de Nascimento: {data_nascimento}
+Instagram: {instagram}
 """)
 
     try:
@@ -72,7 +73,7 @@ def enviar():
     email = request.form['email']
     telefone = request.form['telefone']
     data_nascimento = request.form['data_nascimento']
-    instagram = request.form['instagram']
+    instagram = request.form['instagram'] 
 
     # remover caracteres desnecessarios do numero de telefone inserido
     telefone = telefone.strip().translate({ord(i): None for i in ' +-.()[]'})
@@ -82,14 +83,14 @@ def enviar():
         return render_template('formulario.html', resultado="Nome Inválido, por favor insira novamente")
     if email == '' or '@' not in email:
         return render_template('formulario.html', resultado="E-mail inválido, por favor insira novamente")
-    if len(telefone) != 11 or telefone.isnumber():
+    if len(telefone) != 11 or telefone.isnumeric():
         return render_template('formulario.html', resultado="Numero de telefone invalido. Não esqueça de incluir o DDD, por exemplo: (21) 91234-5678")
 
-    app.logger.info(nome, email, telefone, data_nascimento)
+    app.logger.info(nome, email, telefone, data_nascimento, instagram)
 
     try:
-        enviar_sql(nome, email, telefone, data_nascimento, instagram)
-        enviar_email(nome, email, telefone, data_nascimento, instagram)
+        enviar_sql(nome, email, telefone, data_nascimento,  instagram)
+        enviar_email(nome, email, telefone, data_nascimento,  instagram)
     except Exception as e:
         app.logger.error(e)
         return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
