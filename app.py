@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, session, url_for
 import mysql.connector
 import os
 import smtplib
@@ -8,6 +8,30 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+
+app.secret_key = os.getenv('CHAVE_SECRETA')
+
+usuarios_admin = {
+    os.getenv('ADMIN'): os.getenv('ADMIN_PASS_1'),
+    os.getenv('ADMIN2'): os.getenv('ADMIN_PASS_2')
+}
+
+ #adm do site
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    erro = None
+    if request.method == 'POST':
+        username = request.form['username']
+        senha = request.form['senha']
+
+        if username in usuarios_admin and usuarios_admin[username] == senha:
+            session['usuario'] = username
+            return redirect(url_for('admin'))
+        else:
+            erro = "Usuário ou senha incorretos."
+
+    return render_template('login.html', erro=erro)
+
 
 def connector():
     return mysql.connector.connect(
@@ -86,7 +110,7 @@ def enviar():
     if len(telefone) != 11 or not telefone.isnumeric():
         return render_template('formulario.html', resultado="Numero de telefone invalido. Não esqueça de incluir o DDD, por exemplo: (21) 91234-5678")
 
-    app.logger.info(nome, email, telefone, data_nascimento, instagram)
+    app.logger.info(f"{nome}, {email}, {telefone}, {data_nascimento}, {instagram}")
 
     try:
         enviar_sql(nome, email, telefone, data_nascimento,  instagram)
@@ -99,6 +123,8 @@ def enviar():
 
 @app.route('/admin')
 def admin():
+    if 'usuario' not in session:
+        return redirect(url_for('login'))
     conn = connector()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM inscricoes ORDER BY data_envio DESC")
