@@ -4,17 +4,32 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Body com fundo e centralização do conteúdo principal */
+/* Fonte base para todo o conteúdo */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fundo com imagem e camada escura */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     background: url('/static/images/palco.png') no-repeat center center fixed;
     background-size: cover;
-    color: white;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    background-position: center;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* camada preta semi-transparente */
+    z-index: -1;
 }
 
 /* Header (navbar) */
@@ -34,6 +49,14 @@ header {
     margin: 0 auto;
 }
 
+/* Título com Roboto Slab */
+h1 {
+    font-family: 'Roboto Slab', serif;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Header flex layout */
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -134,7 +157,7 @@ nav a:hover::after {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Responsivo */
+
 @media (max-width: 768px) {
     .header-actions {
         flex-direction: column;
@@ -147,45 +170,56 @@ nav a:hover::after {
     }
 }
 
-/* Centraliza o formulário na área abaixo do header */
-.main-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
+.main-content { 
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
 }
 
-/* Estilo do formulário */
 .form-container {
-    background-color: rgba(0, 0, 0, 0.874);
-    padding: 30px 40px;
-    border-radius: 10px;
-    width: 300px;
-    color: white;
+  background-color: rgba(0, 0, 0, 0.874);
+  padding: 30px 40px;
+  border-radius: 10px;
+  width: 306px;
+  color: white;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: -15px;
+  font-weight: 600;
+  color: white;
 }
 
 input[type="text"],
 input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0 15px 0;
-    border: none;
-    border-radius: 5px;
-    background-color: white;
-    color: black;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px 0;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
 }
 
 .btn {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 .btn:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }

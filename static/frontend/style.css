@@ -634,14 +634,15 @@ section {
 }
 
 .galeria-item {
-  flex: 0 0 22%;
-  background: #eee;
+  flex: 0 0 23%;
+  background: #fff; 
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
   position: relative;
   cursor: pointer;
 }
+
 
 .galeria-item img {
   width: 101%;
@@ -656,7 +657,7 @@ section {
   right: 0;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 10px;
+  padding: 6px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
