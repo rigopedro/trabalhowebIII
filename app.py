@@ -12,8 +12,8 @@ app = Flask(__name__)
 app.secret_key = os.getenv('CHAVE_SECRETA')
 
 usuarios_admin = {
-    os.getenv('ADMIN'): os.getenv('ADMIN_PASS_1'),
-    os.getenv('ADMIN2'): os.getenv('ADMIN_PASS_2')
+    os.getenv('ADMIN'): os.getenv('ADMIN_SENHA'),
+    os.getenv('ADMIN2'): os.getenv('ADMIN2_SENHA')
 }
 
  #adm do site
