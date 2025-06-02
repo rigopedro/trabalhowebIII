@@ -558,6 +558,14 @@ section {
         flex-direction: column;
         gap: 20px;
     }
+
+    header {
+        max-height: 450px;
+    }
+    
+    section {
+        scroll-margin-top: 300px;
+    }
     
     .logo-container {
         flex-direction: column;
