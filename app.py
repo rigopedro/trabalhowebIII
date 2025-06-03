@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session, url_for
+from flask import Flask, render_template, redirect, request, session, url_for, g
 import mysql.connector
 import os
 import smtplib
@@ -11,6 +11,8 @@ app = Flask(__name__)
 
 app.secret_key = os.getenv('CHAVE_SECRETA')
 
+
+# da p remover aqui pq vamo autenticar pelo banco ou a gente muda a lógica dps
 usuarios_admin = {
     os.getenv('ADMIN'): os.getenv('ADMIN_SENHA'),
     os.getenv('ADMIN2'): os.getenv('ADMIN2_SENHA')
@@ -33,16 +35,51 @@ def login():
     return render_template('login.html', erro=erro)
 
 
-def connector():
-    return mysql.connector.connect(
+# gerenciar conexao com bd
+def get_db():
+    if 'db' not in g:
+        g.db = mysql.connector.connect(
         host="localhost",
         user="root",
         password="",
         database="alakazam_db"
     )
+    return g.db
+
+#fecha conexao com bd no final da req
+@app.teardown_appcontext
+def close_db(e=None):
+    db = g.pop('db', None)
+    if db is not None:
+        db.close()
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    erro = None
+    if request.method == 'POST':
+        username = request.form['username']
+        senha = request.form['senha']
+
+        conn = get_db()
+        cursor = conn.cursor(dictionary=True)
+        
+        sql = "SELECT * FROM admins WHERE username = %s AND senha = %s"
+        cursor.execute(sql, (username, senha))
+        admin = cursor.fetchone()
+
+        cursor.close()
+
+        if admin:
+            session['usuario'] = admin['username']
+            return redirect(url_for('admin'))
+        else:
+            erro = "Usuário ou senha incorretos."
+
+    return render_template('login.html', erro=erro)
 
 def enviar_sql(nome, email, telefone, data_nascimento, instagram):
-    conn = connector()
+    conn = get_db()
     cursor = conn.cursor()
     sql = "INSERT INTO inscricoes (nome, email, telefone, data_nascimento, instagram) VALUES (%s, %s, %s, %s, %s)" 
     val = (nome, email, telefone, data_nascimento, instagram) 
@@ -125,7 +162,7 @@ def enviar():
 def admin():
     if 'usuario' not in session:
         return redirect(url_for('login'))
-    conn = connector()
+    conn = get_db()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM inscricoes ORDER BY data_envio DESC")
     inscritos = cursor.fetchall()
