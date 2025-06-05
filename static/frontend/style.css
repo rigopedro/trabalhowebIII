@@ -1,4 +1,3 @@
-/* Reset e estilos básicos */
 * {
     margin: 0;
     padding: 0;
@@ -35,7 +34,6 @@ p {
     color: inherit;
 }
 
-/* Header */
 header {
     background-color: #000;
     color: white;
@@ -83,7 +81,6 @@ header {
     color: #ccc;
 }
 
-/* Navegação */
 nav ul {
     list-style: none;
     display: flex;
@@ -124,14 +121,12 @@ nav a:hover::after {
     width: 70%;
 }
 
-/* Header Actions */
 .header-actions {
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
-/* Botão de Inscrição */
 .inscricao-btn {
     background-color: #8E44AD;
     color: white;
@@ -151,7 +146,6 @@ nav a:hover::after {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .header-actions {
         gap: 15px;
@@ -161,7 +155,7 @@ nav a:hover::after {
     
     .inscricao-btn {
         padding: 8px 20px;
-        order: -1; /* Coloca o botão primeiro em mobile */
+        order: -1; 
         margin-bottom: 10px;
     }
 }
@@ -177,7 +171,6 @@ section {
     color: #333;
 }
 
-/* Seção Sobre */
 .sobre-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -273,8 +266,6 @@ section {
     }
 }
 
-
-/* Imagem destaque */
 .img-destaque {
     width: 90%;
     max-height: 600px;
@@ -284,7 +275,6 @@ section {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Oficinas - Layout de 5 colunas */
 .oficinas-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -292,7 +282,6 @@ section {
     margin-top: 30px;
 }
 
-/* Ajustes para telas menores */
 @media (max-width: 1200px) {
     .oficinas-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -311,7 +300,6 @@ section {
     }
 }
 
-/* Estilos dos cards de oficina (mantidos) */
 .oficina {
     background: #111;
     padding: 20px;
@@ -319,7 +307,7 @@ section {
     transition: all 0.3s;
     border-left: 4px solid transparent;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    min-height: 200px; /* Altura uniforme */
+    min-height: 200px; 
     display: flex;
     flex-direction: column;
 }
@@ -333,31 +321,28 @@ section {
 .oficina p {
     color: #ddd;
     font-size: 0.9rem;
-    flex-grow: 1; /* Faz o texto ocupar espaço disponível */
+    flex-grow: 1; 
 }
 
-/* Efeitos hover mantidos */
 .oficina:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     border-left: 4px solid #8E44AD;
 }
 
-/* Responsivo para oficinas */
 @media (max-width: 768px) {
     .oficinas-grid {
         grid-template-columns: 1fr;
     }
 }
 
-/* Galeria - Layout de 5 colunas fixas */
 .galeria-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
     margin-top: 30px;
-    overflow-x: auto; /* Para telas menores que 5 colunas */
-    padding-bottom: 10px; /* Espaço para scroll */
+    overflow-x: auto; 
+    padding-bottom: 10px; 
 }
 
 .galeria-item {
@@ -365,12 +350,11 @@ section {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    aspect-ratio: 1 / 1; /* Mantém proporção quadrada */
-    min-width: 200px; /* Largura mínima para cada item */
+    aspect-ratio: 1 / 1; 
+    min-width: 200px; 
     transition: all 0.3s;
 }
 
-/* Efeitos de hover mantidos */
 .galeria-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
@@ -382,7 +366,6 @@ section {
     object-fit: cover;
 }
 
-/* Overlay sempre visível (opcional) */
 .galeria-overlay {
     position: absolute;
     bottom: 0;
@@ -396,20 +379,19 @@ section {
 .galeria-overlay h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
-    color: #ffffff; /* Título em preto */
+    color: #ffffff; 
 }
 
 .galeria-overlay p {
     font-size: 0.8rem;
     margin-bottom: 0;
-    color: #fff; /* Descrição em branco */
+    color: #fff; 
 }
 
 
-/* Responsividade */
 @media (max-width: 1200px) {
     .galeria-grid {
-        grid-template-columns: repeat(5, 200px); /* Largura fixa para scroll horizontal */
+        grid-template-columns: repeat(5, 200px); 
         grid-auto-flow: column;
     }
 }
@@ -426,7 +408,6 @@ section {
     }
 }
 
-/* Footer */
 .site-footer {
     background-color: #000;
     color: #fff;
@@ -472,7 +453,6 @@ section {
     margin-bottom: 15px;
 }
 
-/* Social Links */
 .social-links {
     display: flex;
     gap: 15px;
@@ -490,7 +470,6 @@ section {
     transform: translateY(-3px);
 }
 
-/* Contact Info */
 .contact-info p {
     display: flex;
     align-items: center;
@@ -503,7 +482,6 @@ section {
     color: #8E44AD;
 }
 
-/* Map */
 .map-container {
     border-radius: 8px;
     overflow: hidden;
@@ -517,7 +495,6 @@ section {
     border: none;
 }
 
-/* Footer Bottom */
 .footer-bottom {
     text-align: center;
     padding: 20px 0;
@@ -527,7 +504,6 @@ section {
     font-size: 0.9rem;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
@@ -543,7 +519,6 @@ section {
     }
 }
 
-/* Responsivo */
 @media (max-width: 992px) {
     .col-md-3,
     .col-md-4,
