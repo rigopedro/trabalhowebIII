@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
 /* Fonte base */
@@ -175,28 +174,29 @@ nav a:hover::after {
     flex: 1;
     display: flex;
     justify-content: center;
+    align-items: center;
     padding: 40px 20px;
 }
 
-/* Formulário e Tabela */
+/* Formulário */
 .form-container {
-    background-color: white;
-    color: #333;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1000px;
+    background-color: rgba(0, 0, 0, 0.87);
+    padding: 30px 40px;
+    border-radius: 10px;
+    width: 306px;
+    color: white;
 }
 
 .form-container h2 {
-    margin-bottom: 20px;
-    color: rgba(0, 0, 0, 0.87);
     text-align: center;
+    margin-bottom: 20px;
 }
 
-label {
-    font-weight: bold;
+.form-container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: -10px;
+    color: white;
 }
 
 input[type="text"],
@@ -205,50 +205,23 @@ input[type="date"] {
     width: 100%;
     padding: 10px;
     margin: 8px 0 15px 0;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: 5px;
     background-color: white;
     color: black;
 }
 
-/* Botão */
 .btn {
-    display: inline-block;
     width: 100%;
-    padding: 12px;
-    background-color: rgba(0, 0, 0, 0.87);
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
+    padding: 12px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Tabela */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-th, td {
-    text-align: left;
-    padding: 12px 10px;
-    border: 1px solid #ddd; /* Linhas verticais e horizontais */
-}
-
-th {
-    background-color: rgba(0, 0, 0, 0.87);
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #45a049;
 }

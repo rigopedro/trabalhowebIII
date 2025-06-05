@@ -4,20 +4,43 @@
     <meta charset="UTF-8">
     <title>Lista de Inscritos</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='frontend/admin.css') }}">
-
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
+                    <div class="title-container">
+                        <h1>Grupo Alakazam</h1>
+                        <p>Instituição de Artes e Cultura</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <nav>
+                        <ul>
+                            <li><a href="/#sobre">Sobre</a></li>
+                            <li><a href="/#oficinas">Oficinas</a></li>
+                            <li><a href="/#galeria">Galeria</a></li>
+                        </ul>
+                    </nav>
+                    <a href="/" class="login-btn">Início</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <div class="main-content">
         <div class="form-container">
             <h2>Inscrições recebidas</h2>
-            <table border="1" cellpadding="10">
+            <table>
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Telefone</th>
                     <th>Email</th>
                     <th>Data de Nascimento</th>
-                    <th>Instagram</th> 
+                    <th>Instagram</th>
                     <th>Data de Envio</th>
                 </tr>
                 {% for pessoa in inscritos %}
@@ -27,7 +50,7 @@
                     <td>{{ pessoa.telefone }}</td>
                     <td>{{ pessoa.email }}</td>
                     <td>{{ pessoa.data_nascimento }}</td>
-                    <td>{{ pessoa.instagram }}</td> 
+                    <td>{{ pessoa.instagram }}</td>
                     <td>{{ pessoa.data_envio }}</td>
                 </tr>
                 {% endfor %}

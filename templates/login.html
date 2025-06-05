@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab&display=swap" rel="stylesheet">
+    <style>
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-container input {
+            width: 100%;
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .toggle-password svg {
+            width: 24px;
+            height: 24px;
+            fill: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='images/coelho-logo.jpeg') }}" alt="Logo Alakazam - Coelho" class="logo">
+                    <div class="title-container">
+                        <h1>Grupo Alakazam</h1>
+                        <p>Instituição de Artes e Cultura</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <nav>
+                        <ul>
+                            <li><a href="/#sobre">Sobre</a></li>
+                            <li><a href="/#oficinas">Oficinas</a></li>
+                            <li><a href="/#galeria">Galeria</a></li>
+                        </ul>
+                    </nav>
+                    <a href="/" class="login-btn">Início</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Formulário -->
+    <main class="main-content">
+        <div class="form-container">
+            <h2>Administrador:</h2>
+            <form action="/enviar" method="POST">
+                <label for="fname">Login</label><br>
+                <input type="text" id="fname" name="nome"><br>
+
+                <label for="fpassword">Senha</label><br>
+                <div class="password-container">
+                    <input type="password" id="fpassword" name="senha">
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <svg id="eye-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12c-2.8 0-5-2.2-5-5s2.2-5 
+                                     5-5 5 2.2 5 5-2.2 5-5 5zm0-8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
+                        </svg>
+                        <svg id="eye-closed" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display: none;">
+                            <path d="M12 5c-2.5 0-4.7 1.2-6.4 3.1l-2.6-2.6-1.4 1.4 19 19 1.4-1.4-3.5-3.5c1.3-1.5 
+                                     2.3-3.3 2.9-5.1 0 0-3-7-10-7zm-7.1 3.9c-.6.8-1.1 1.6-1.5 2.5 1.3 3.1 4.3 6.1 8.6 
+                                     6.1 1.4 0 2.7-.3 3.9-.8l-2.1-2.1c-.5.2-1 .3-1.8.3a3.5 3.5 0 0 1-3.5-3.5c0-.8.2-1.3.3-1.8l-3.9-3.9z"/>
+                        </svg>
+                    </button>
+                </div><br>
+
+                <input type="submit" class="btn" value="Logar"/>
+            </form>
+            <br>
+            {% if resultado %}
+            <center> 
+                <p>{{ resultado }}</p>
+            </center>
+            {% endif %}
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("fpassword");
+            const eyeOpen = document.getElementById("eye-open");
+            const eyeClosed = document.getElementById("eye-closed");
+
+            const isPassword = passwordInput.type === "password";
+            passwordInput.type = isPassword ? "text" : "password";
+            eyeOpen.style.display = isPassword ? "none" : "inline";
+            eyeClosed.style.display = isPassword ? "inline" : "none";
+        }
+    </script>
+</body>
+</html>
