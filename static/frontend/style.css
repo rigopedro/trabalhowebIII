@@ -146,20 +146,6 @@ nav a:hover::after {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-@media (max-width: 768px) {
-    .header-actions {
-        gap: 15px;
-        flex-direction: column;
-        width: 100%;
-    }
-    
-    .inscricao-btn {
-        padding: 8px 20px;
-        order: -1; 
-        margin-bottom: 10px;
-    }
-}
-
 section {
     scroll-margin-top: 150px;
     padding-bottom: 40px;
@@ -254,17 +240,6 @@ section {
     100% { transform: translateX(-100%); }
 }
 
-@media (max-width: 768px) {
-    .carousel-item {
-        flex: 0 0 60%;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-item {
-        flex: 0 0 80%;
-    }
-}
 
 .img-destaque {
     width: 90%;
@@ -282,23 +257,6 @@ section {
     margin-top: 30px;
 }
 
-@media (max-width: 1200px) {
-    .oficinas-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .oficinas-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .oficinas-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .oficina {
     background: #111;
@@ -330,11 +288,6 @@ section {
     border-left: 4px solid #8E44AD;
 }
 
-@media (max-width: 768px) {
-    .oficinas-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .galeria-grid {
     display: grid;
@@ -388,25 +341,6 @@ section {
     color: #fff; 
 }
 
-
-@media (max-width: 1200px) {
-    .galeria-grid {
-        grid-template-columns: repeat(5, 200px); 
-        grid-auto-flow: column;
-    }
-}
-
-@media (max-width: 768px) {
-    .galeria-item {
-        min-width: 180px;
-    }
-}
-
-@media (max-width: 480px) {
-    .galeria-item {
-        min-width: 160px;
-    }
-}
 
 .site-footer {
     background-color: #000;
@@ -503,23 +437,62 @@ section {
     color: #999;
     font-size: 0.9rem;
 }
-
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .footer-column {
-        min-width: 100%;
-    }
-    
-    .map-container iframe {
-        height: 250px;
-    }
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
 }
 
-@media (max-width: 992px) {
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 42px;
+}
+
+.galeria-item {
+    flex: 0 0 23%;
+    background: #fff; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    position: relative;
+    cursor: pointer;
+}
+
+
+.galeria-item img {
+    width: 101%;
+    display: block;
+    height: auto;
+}
+
+.galeria-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 6px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+@media (max-width: 1200px) {
+    .oficinas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .galeria-grid {
+        grid-template-columns: repeat(5, 200px); 
+        grid-auto-flow: column;
+    }
+
     .col-md-3,
     .col-md-4,
     .col-md-5 {
@@ -528,7 +501,40 @@ section {
     }
 }
 
+
 @media (max-width: 768px) {
+    .oficinas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-actions {
+        gap: 15px;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .inscricao-btn {
+        padding: 8px 20px;
+        order: -1; 
+        margin-bottom: 10px;
+    }
+
+    .galeria-item {
+        min-width: 180px;
+    }
+    .footer-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-column {
+        min-width: 100%;
+    }
+
+    .map-container iframe {
+        height: 250px;
+    }
+
     .header-content {
         flex-direction: column;
         gap: 20px;
@@ -537,116 +543,87 @@ section {
     header {
         max-height: 450px;
     }
-    
+
     section {
         scroll-margin-top: 300px;
     }
-    
+
     .logo-container {
         flex-direction: column;
         text-align: center;
     }
-    
+
     nav ul {
         justify-content: center;
         flex-wrap: wrap;
     }
-    
+
     section {
         padding: 40px 0;
     }
-    
+
     .sobre-grid,
     .atividades-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .col-md-3,
     .col-md-4,
     .col-md-5 {
         flex: 0 0 100%;
         max-width: 100%;
     }
-    
+
     .ftco-footer-widget {
         margin-bottom: 40px;
     }
-    
+
     .map-container iframe {
         height: 300px;
     }
+
+    .carousel-item {
+        flex: 0 0 60%;
+    }
+
 }
 
 @media (max-width: 480px) {
     .container {
         width: 95%;
     }
-    
+
     nav a {
         padding: 6px 8px;
         font-size: 0.8rem;
     }
-    
+
     .logo {
         height: 50px;
     }
-    
+
     .title-container h1 {
         font-size: 1.6rem;
     }
-    
+
     .galeria-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .sobre-item {
         padding: 20px;
     }
-}
 
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  margin-top: 20px;
-}
+    .galeria-item {
+        min-width: 160px;
+    }
 
-.carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 42px;
-}
+    .oficinas-grid {
+        grid-template-columns: 1fr;
+    }
 
-.galeria-item {
-  flex: 0 0 23%;
-  background: #fff; 
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
-  position: relative;
-  cursor: pointer;
-}
-
-
-.galeria-item img {
-  width: 101%;
-  display: block;
-  height: auto;
-}
-
-.galeria-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 6px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.galeria-item:hover .galeria-overlay {
-  opacity: 1;
+    .carousel-item {
+        flex: 0 0 80%;
+    }
 }
 
