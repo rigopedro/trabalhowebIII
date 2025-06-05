@@ -65,9 +65,9 @@
     <main class="main-content">
         <div class="form-container">
             <h2>Administrador:</h2>
-            <form action="/enviar" method="POST">
+            <form action="{{ url_for('login') }}" method="POST">
                 <label for="fname">Login</label><br>
-                <input type="text" id="fname" name="nome"><br>
+                <input type="text" id="fusuario" name="usuario"><br>
 
                 <label for="fpassword">Senha</label><br>
                 <div class="password-container">

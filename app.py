@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, request, session, url_for, g
+from werkzeug.security import generate_password_hash, check_password_hash
 import mysql.connector
 import os
 import smtplib
@@ -10,30 +11,6 @@ load_dotenv()
 app = Flask(__name__)
 
 app.secret_key = os.getenv('CHAVE_SECRETA')
-
-
-# da p remover aqui pq vamo autenticar pelo banco ou a gente muda a lógica dps
-usuarios_admin = {
-    os.getenv('ADMIN'): os.getenv('ADMIN_SENHA'),
-    os.getenv('ADMIN2'): os.getenv('ADMIN2_SENHA')
-}
-
- #adm do site
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    erro = None
-    if request.method == 'POST':
-        username = request.form['username']
-        senha = request.form['senha']
-
-        if username in usuarios_admin and usuarios_admin[username] == senha:
-            session['usuario'] = username
-            return redirect(url_for('admin'))
-        else:
-            erro = "Usuário ou senha incorretos."
-
-    return render_template('login.html', erro=erro)
-
 
 # gerenciar conexao com bd
 def get_db():
@@ -56,22 +33,24 @@ def close_db(e=None):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'usuario' in session:
+        return redirect(url_for('admin'))
     erro = None
     if request.method == 'POST':
-        username = request.form['username']
+        usuario = request.form['usuario']
         senha = request.form['senha']
 
         conn = get_db()
         cursor = conn.cursor(dictionary=True)
         
-        sql = "SELECT * FROM admins WHERE username = %s AND senha = %s"
-        cursor.execute(sql, (username, senha))
+        sql = "SELECT * FROM admins WHERE usuario = %s"
+        cursor.execute(sql, (usuario,))
         admin = cursor.fetchone()
 
         cursor.close()
 
-        if admin:
-            session['usuario'] = admin['username']
+        if admin and check_password_hash(admin['senha'], senha):
+            session['usuario'] = admin['usuario']
             return redirect(url_for('admin'))
         else:
             erro = "Usuário ou senha incorretos."
