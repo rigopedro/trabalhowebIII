@@ -87,7 +87,7 @@ Instagram: {instagram}
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(os.getenv('EMAIL_USER'), os.getenv('SENHA_EMAIL'))
-            smtp.send_message(msg)
+            smtp.sendmail(os.getenv('EMAIL_USER'), os.getenv('EMAIL_DESTINO'), msg.as_string())
     except Exception as e:
         app.logger.error(f"Erro ao enviar email: {e}")
 
@@ -136,7 +136,10 @@ def enviar():
         app.logger.error(e)
         return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
 
-    enviar_email(nome, email, telefone, data_nascimento,  instagram)
+    try:
+        enviar_email(nome, email, telefone, data_nascimento,  instagram)
+    except Exception as e:
+        app.logger.error(e)
 
     return render_template('formulario.html', resultado="Inscrição enviada com sucesso!")
 
@@ -144,6 +147,7 @@ def enviar():
 def admin():
     if 'usuario' not in session:
         return redirect(url_for('login'))
+
     conn = get_db()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM inscricoes ORDER BY data_envio DESC")
@@ -155,3 +159,4 @@ def admin():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
