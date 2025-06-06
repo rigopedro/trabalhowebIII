@@ -5,8 +5,10 @@ import os
 import smtplib
 from email.message import EmailMessage
 from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
+dotenv_path = Path('.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 app = Flask(__name__)
 
@@ -130,10 +132,11 @@ def enviar():
 
     try:
         enviar_sql(nome, email, telefone, data_nascimento,  instagram)
-        enviar_email(nome, email, telefone, data_nascimento,  instagram)
     except Exception as e:
         app.logger.error(e)
         return render_template('formulario.html', resultado="Erro na conexão com o nosso banco de dados, tente novamente mais tarde!")
+
+    enviar_email(nome, email, telefone, data_nascimento,  instagram)
 
     return render_template('formulario.html', resultado="Inscrição enviada com sucesso!")
 
