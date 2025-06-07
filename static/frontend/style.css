@@ -588,42 +588,56 @@ section {
 
 }
 
+
 @media (max-width: 480px) {
-    .container {
-        width: 95%;
+    header {
+        padding: 5px 10px;
     }
 
-    nav a {
-        padding: 6px 8px;
-        font-size: 0.8rem;
+    .logo-container {
+        display: none; 
     }
 
-    .logo {
-        height: 50px;
+    @media (max-width: 480px) {
+    .title-container {
+        display: block !important; 
+        text-align: center;
+        width: 100%;
+        padding: 5px 0;
+        color: #000 !important; 
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 10;
     }
 
     .title-container h1 {
-        font-size: 1.6rem;
-    }
-
-    .galeria-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .sobre-item {
-        padding: 20px;
-    }
-
-    .galeria-item {
-        min-width: 160px;
-    }
-
-    .oficinas-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .carousel-item {
-        flex: 0 0 80%;
+        font-size: 1.2rem !important;
+        font-weight: bold !important;
+        margin: 0;
+        color: inherit !important;
     }
 }
 
+    nav {
+        display: none;
+    }
+
+    .header-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 5px 0;
+    }
+
+    .header-actions button, 
+    .header-actions a {
+        flex: 1 1 40%;
+        font-size: 0.75rem;
+        padding: 6px 8px;
+        min-width: 100px;
+        box-sizing: border-box;
+    }
+}
