@@ -42,7 +42,6 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    max-height: 150px;
 }
 
 .header-content {
@@ -50,6 +49,7 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .logo-container {
@@ -124,10 +124,12 @@ nav a:hover::after {
 .header-actions {
     display: flex;
     align-items: center;
+    padding: 15px 0;
     gap: 30px;
 }
 
 .inscricao-btn {
+    text-align: center;
     background-color: #8E44AD;
     color: white;
     padding: 10px 25px;
@@ -169,7 +171,7 @@ section {
     padding: 30px;
     border-radius: 8px;
     transition: all 0.3s;
-    border-left: 4px solid #8E44AD;
+    border-left: 4px solid hwb(282 27% 32%);
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
@@ -234,6 +236,47 @@ section {
     object-fit: cover;
     border-radius: 8px;
 }
+
+.aulas-section {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.horario-geral {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.aulas-lista {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.aulas-lista li {
+  font-size: 1.1rem;
+  color: #777;
+  white-space: nowrap;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.aulas-lista li:hover {
+  color: #7D3C98;
+  transform: translateY(-2px);
+}
+
 
 @keyframes scroll {
     0% { transform: translateX(0); }
@@ -501,7 +544,6 @@ section {
     }
 }
 
-
 @media (max-width: 768px) {
     .oficinas-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -554,8 +596,8 @@ section {
     }
 
     nav ul {
-        justify-content: center;
-        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 100%;
     }
 
     section {
@@ -588,14 +630,13 @@ section {
 
 }
 
-
 @media (max-width: 480px) {
     header {
         padding: 5px 10px;
     }
 
     .logo-container {
-        display: none; 
+        display: flex; 
     }
 
     @media (max-width: 480px) {
@@ -612,15 +653,16 @@ section {
     }
 
     .title-container h1 {
+
         font-size: 1.2rem !important;
         font-weight: bold !important;
         margin: 0;
-        color: inherit !important;
+        color: white !important;
     }
 }
 
     nav {
-        display: none;
+        display:inline-flex;
     }
 
     .header-actions {
